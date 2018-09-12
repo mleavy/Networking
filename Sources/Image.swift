@@ -28,7 +28,7 @@ extension Image {
         }
     #endif
 
-    func pngData() -> Data? {
+    func asPNGData() -> Data? {
         #if os(OSX)
             return data(.png)
         #else
