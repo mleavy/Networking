@@ -70,7 +70,7 @@ class JSONTests: XCTestCase {
         // This should work but Swift is not able to compile it.
         // XCTAssertEqual(compared, result)
 
-        XCTAssertEqual(Array(compared[0].keys), Array(result[0].keys))
+        XCTAssertEqual(Array(compared[0].keys.sorted()), Array(result[0].keys.sorted()))
         XCTAssertEqual(compared[0]["id"] as? Int, result[0]["id"] as? Int)
         XCTAssertEqual(compared[0]["name"] as? String, result[0]["name"] as? String)
     }
@@ -79,7 +79,7 @@ class JSONTests: XCTestCase {
         let result = try! FileManager.json(from: "simple_dictionary.json", bundle: Bundle(for: JSONTests.self)) as? [String: Any] ?? [String: Any]()
         let compared = ["id": 1, "name": "Hi"] as [String: Any]
         XCTAssertEqual(compared.count, result.count)
-        XCTAssertEqual(Array(compared.keys), Array(result.keys))
+        XCTAssertEqual(Array(compared.keys.sorted()), Array(result.keys.sorted()))
     }
 
     func testFromFileNamedWithNotFoundFile() {
@@ -115,7 +115,7 @@ class JSONTests: XCTestCase {
             do {
                 let JSON = try data?.toJSON() as? [String: Any]
                 let url = JSON?["url"] as! String
-                XCTAssertEqual(url, "http://httpbin.org/get")
+                XCTAssertEqual(url, "https://httpbin.org/get")
             } catch {
                 // Handle error
             }

@@ -33,7 +33,7 @@ class GETTests: XCTestCase {
                 let json = response.dictionaryBody
 
                 guard let url = json["url"] as? String else { XCTFail(); return }
-                XCTAssertEqual(url, "http://httpbin.org/get")
+                XCTAssertEqual(url, "https://httpbin.org/get")
 
                 guard let headers = json["headers"] as? [String: String] else { XCTFail(); return }
                 let contentType = headers["Content-Type"]
@@ -51,7 +51,7 @@ class GETTests: XCTestCase {
             case let .success(response):
                 let json = response.dictionaryBody
                 guard let url = json["url"] as? String else { XCTFail(); return }
-                XCTAssertEqual(url, "http://httpbin.org/get")
+                XCTAssertEqual(url, "https://httpbin.org/get")
 
                 let headers = response.headers
                 guard let connection = headers["Connection"] as? String else { XCTFail(); return }
@@ -231,7 +231,7 @@ class GETTests: XCTestCase {
             switch result {
             case let .success(response):
                 let json = response.dictionaryBody
-                XCTAssertEqual(json["url"] as? String, "http://httpbin.org/get?count=25")
+                XCTAssertEqual(json["url"] as? String, "https://httpbin.org/get?count=25")
             case .failure:
                 XCTFail()
             }
@@ -244,7 +244,7 @@ class GETTests: XCTestCase {
             switch result {
             case let .success(response):
                 let json = response.dictionaryBody
-                XCTAssertEqual(json["url"] as? String, "http://httpbin.org/get?accountId=123&userId=5")
+                XCTAssertEqual(json["url"] as? String, "https://httpbin.org/get?accountId=123&userId=5")
             case .failure:
                 XCTFail()
             }
@@ -257,7 +257,7 @@ class GETTests: XCTestCase {
             switch result {
             case let .success(response):
                 let json = response.dictionaryBody
-                XCTAssertEqual(json["url"] as? String, "http://httpbin.org/get?name=Elvis Nuñez")
+                XCTAssertEqual(json["url"] as? String, "https://httpbin.org/get?name=Elvis Nuñez")
             case .failure:
                 XCTFail()
             }
