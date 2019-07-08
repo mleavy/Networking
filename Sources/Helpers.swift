@@ -69,9 +69,12 @@ extension FileManager {
 }
 
 extension URLRequest {
-    init(url: URL, requestType: Networking.RequestType, path _: String, parameterType: Networking.ParameterType?, responseType: Networking.ResponseType, boundary: String, authorizationHeaderValue: String?, token: String?, authorizationHeaderKey: String, headerFields: [String: String]?) {
+    init(url: URL, requestType: Networking.RequestType, path _: String, parameterType: Networking.ParameterType?, responseType: Networking.ResponseType, boundary: String, authorizationHeaderValue: String?, token: String?, authorizationHeaderKey: String, headerFields: [String: String]?, timeout: TimeInterval?) {
         self = URLRequest(url: url)
         httpMethod = requestType.rawValue
+        if let timeout = timeout {
+            timeoutInterval = timeout
+        }
 
         if let parameterType = parameterType, let contentType = parameterType.contentType(boundary) {
             addValue(contentType, forHTTPHeaderField: "Content-Type")

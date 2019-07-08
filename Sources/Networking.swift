@@ -106,6 +106,8 @@ open class Networking {
 
     /// Flag used to indicate synchronous request.
     public var isSynchronous = false
+    
+    public var timeout: TimeInterval?
 
     /// Flag used to disable error logging. Useful when want to disable log before release build.
     public var isErrorLoggingEnabled = true
