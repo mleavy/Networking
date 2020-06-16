@@ -7,9 +7,9 @@ let package = Package(
         .iOS(.v10)
     ],
     products: [
-        .library(name: "Networking", targets: ["Networking-iOS"])
+        .library(name: "Networking", targets: ["Networking"])
     ],
     targets: [
-        .target(name: "Networking-iOS", path: "Sources")
+        .target(name: "Networking", path: "Sources")
     ]
 )
